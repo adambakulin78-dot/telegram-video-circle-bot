@@ -1,0 +1,14 @@
+# Положи в /etc/systemd/system/kruzhok.service, затем:
+#   systemctl daemon-reload && systemctl enable --now kruzhok
+[Unit]
+Description=Kruzhok Telegram bot
+After=network.target
+
+[Service]
+WorkingDirectory=/opt/kruzhok
+ExecStart=/opt/kruzhok/venv/bin/python bot.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
